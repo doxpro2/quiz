@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<div style="max-width: 500px; margin: 2rem auto; padding: 2rem; background: #f9f9f9; border-radius: 10px;">
+  <h2 style="text-align:center;">Register</h2>
+  <form method="POST" style="display: flex; flex-direction: column; gap: 1rem;">
+    
+    <input type="text" name="username" placeholder="Enter your name" required>
+    
+    <label for="role">Select your role:</label>
+    <select name="role" id="role" required>
+      <option value="student">Student</option>
+      <option value="teacher">Teacher</option>
+    </select>
+
+    <button type="submit" style="padding: 0.5rem; background: #2196F3; color: white; border: none; border-radius: 6px;">
+      Register
+    </button>
+  </form>
+
+  <p style="text-align:center; margin-top: 1rem;">
+    Already registered? <a href="{{ url_for('login') }}">Login here</a>
+  </p>
+</div>
+{% endblock %}

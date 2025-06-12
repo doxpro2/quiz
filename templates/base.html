@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Quiz App{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2rem;
+            background: #f0f0f0;
+        }
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        a.logout {
+            float: right;
+            text-decoration: none;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul style="color: green;">
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+    <div class="container">
+        {% if session.username %}
+        <div style="text-align: right; margin-bottom: 1rem;">
+            Logged in as <strong>{{ session.username }}</strong> ({{ session.role }})
+            <a href="{{ url_for('logout') }}" class="logout">Logout</a>
+        </div>
+        {% endif %}
+
+        <!-- ✅ This was missing -->
+        {% block content %}
+        {% endblock %}
+    </div>
+
+</body>
+</html>

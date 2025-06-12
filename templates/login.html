@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div style="display: flex; justify-content: center; align-items: center; height: 80vh;">
+  <div style="width: 100%; max-width: 400px; background: #f9f9f9; padding: 2rem; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.1);">
+    
+    <h2 style="text-align: center; margin-bottom: 1.5rem; color: #333;">Login</h2>
+    
+    <form method="POST" style="display: flex; flex-direction: column; gap: 1rem;">
+      <input 
+        type="text" 
+        name="username" 
+        placeholder="Enter your name" 
+        required 
+        style="padding: 0.75rem; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem;"
+      >
+
+      <label for="role" style="font-weight: 500; color: #555;">Choose Role</label>
+      <select 
+        name="role" 
+        id="role" 
+        required 
+        style="padding: 0.75rem; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem;"
+      >
+        <option value="teacher" {% if role == 'teacher' %}selected{% endif %}>Teacher</option>
+        <option value="student" {% if role == 'student' %}selected{% endif %}>Student</option>
+      </select>
+
+      <button 
+        type="submit" 
+        style="padding: 0.75rem; background-color: #4CAF50; color: white; font-weight: bold; border: none; border-radius: 6px; font-size: 1rem; cursor: pointer;"
+      >
+        Login
+      </button>
+    </form>
+
+  </div>
+</div>
+{% endblock %}
